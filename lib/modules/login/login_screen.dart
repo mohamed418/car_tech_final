@@ -2,10 +2,10 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+
 import '../../constants/components.dart';
 import '../../layout/car_layout.dart';
 import '../../network/local/cache_helper.dart';
@@ -74,8 +74,7 @@ class LoginScreen extends StatelessWidget {
               height: 100,
             ).show(context);
           }
-        }
-        else if (state is LoginErrorState) {
+        } else if (state is LoginErrorState) {
           MotionToast.error(
             description: const Text(
               'please check your inputs',
@@ -125,8 +124,7 @@ class LoginScreen extends StatelessWidget {
                                 TextFormField(
                                   textInputAction: TextInputAction.next,
                                   controller: emailController,
-                                  validator:
-                                      (value) {
+                                  validator: (value) {
                                     if (value!.isEmpty) {
                                       return 'دخل البريد الالكتروني';
                                     } else {
@@ -138,7 +136,7 @@ class LoginScreen extends StatelessWidget {
                                     //hintText: 'enter your email',
                                     label: Text(
                                       'الايميل',
-                                      style: GoogleFonts.cairo(),
+                                      style: TextStyle(),
                                     ),
                                   ),
                                 ),
@@ -162,7 +160,7 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                     label: Text(
                                       'كلمة المرور',
-                                      style: GoogleFonts.cairo(),
+                                      style: TextStyle(),
                                     ),
                                   ),
                                   obscureText: cubit.isVisible,
@@ -198,13 +196,18 @@ class LoginScreen extends StatelessWidget {
                                   alignment: Alignment.bottomRight,
                                   child: TextButton(
                                       onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignUpScreen(),));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SignUpScreen(),
+                                            ));
                                         // navigateAndFinish(
                                         //     const SignUpScreen(), context);
                                       },
                                       child: Text(
                                         'ليس لديك حساب؟',
-                                        style: GoogleFonts.cairo(
+                                        style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),
                                       )),
@@ -229,7 +232,7 @@ class LoginScreen extends StatelessWidget {
                                       }
                                     },
                                     child: Text('تسجيل دخول',
-                                        style: GoogleFonts.cairo(
+                                        style: TextStyle(
                                             color: Colors.white, fontSize: 20)),
                                   ),
                                   fallback: (context) => const Center(

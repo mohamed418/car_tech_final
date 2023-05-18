@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../constants/transitions.dart';
@@ -34,7 +33,7 @@ class ConfirmScreen extends StatelessWidget {
                   Navigator.push(context, CustomPageRoute1(child: CarLayout())),
               child: Text(
                 'استخدام التطبيق مره اخرى!',
-                style: GoogleFonts.cairo(fontSize: 20, color: Colors.pink),
+                style: TextStyle(fontSize: 20, color: Colors.pink),
               ),
             )
           ],
@@ -46,7 +45,7 @@ class ConfirmScreen extends StatelessWidget {
   Text buildText(role) {
     return Text(
       role,
-      style: GoogleFonts.cairo(fontSize: 22),
+      style: TextStyle(fontSize: 22),
     );
   }
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_types_as_parameter_names, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 ElevatedButton buildElevatedButton(BuildContext context, function, text) {
   Size size = MediaQuery.of(context).size;
@@ -14,16 +13,17 @@ ElevatedButton buildElevatedButton(BuildContext context, function, text) {
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(size.height*.40),
-              bottomLeft: Radius.circular(size.height*.40),
-              topRight: Radius.circular(size.height*.40),
-              topLeft: Radius.circular(size.height*.40),
+              bottomRight: Radius.circular(size.height * .40),
+              bottomLeft: Radius.circular(size.height * .40),
+              topRight: Radius.circular(size.height * .40),
+              topLeft: Radius.circular(size.height * .40),
             ),
           ),
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: size.height*.014, horizontal: size.width*.22),
+        padding: EdgeInsets.symmetric(
+            vertical: size.height * .014, horizontal: size.width * .22),
         child: Text(
           text,
           style: const TextStyle(
@@ -57,7 +57,7 @@ buildSnackBar(String? message, context, duration) {
     SnackBar(
       content: Text(
         message!,
-        style: GoogleFonts.cairo(),
+        style: TextStyle(),
       ),
       duration: Duration(seconds: duration),
     ),
@@ -172,7 +172,7 @@ Widget defaultFormField({
       textInputAction: action,
       maxLines: maxLines,
       enabled: isClickable,
-      style: GoogleFonts.cairo(),
+      style: TextStyle(),
       onFieldSubmitted: (s) {
         onSubmit!(s);
       },
@@ -183,9 +183,9 @@ Widget defaultFormField({
         return validate(value);
       },
       decoration: InputDecoration(
-        errorStyle: GoogleFonts.cairo(),
+        errorStyle: TextStyle(),
         hintText: hint,
-        hintStyle: GoogleFonts.cairo(),
+        hintStyle: TextStyle(),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: const BorderSide(),
@@ -198,7 +198,7 @@ Widget defaultFormField({
           ),*/
         ),
         labelText: label,
-        labelStyle: GoogleFonts.cairo(),
+        labelStyle: TextStyle(),
         prefixIcon: Icon(
           prefix,
         ),

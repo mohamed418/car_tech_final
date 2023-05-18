@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
+
 import '../../../constants/components.dart';
 
 class HelpScreen extends StatelessWidget {
@@ -29,7 +29,7 @@ class HelpScreen extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back),
                   ),
                 ),
-                shadeMask('ايه مقترحاتك', GoogleFonts.cairo(fontSize: 25)),
+                shadeMask('ايه مقترحاتك', TextStyle(fontSize: 25)),
                 const SizedBox(height: 30),
                 defaultFormField(
                   controller: fixController,
@@ -55,7 +55,7 @@ class HelpScreen extends StatelessWidget {
                           'تم الارسال بنجاح',
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.cairo(fontSize: 15),
+                          style: TextStyle(fontSize: 15),
                         ),
                         animationType: AnimationType.fromLeft,
                         //layoutOrientation: ORIENTATION.rtl,
@@ -67,9 +67,8 @@ class HelpScreen extends StatelessWidget {
                       //FocusScope.of(context).unfocus();
                     }
                   },
-                  child: Text('دووس'.toUpperCase(),
-                      style:
-                      GoogleFonts.cairo(color: Colors.white, fontSize: 20)),
+                  child: Text('تأكيد'.toUpperCase(),
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
                 ),
               ],
             ),

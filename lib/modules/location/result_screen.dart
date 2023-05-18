@@ -1,10 +1,8 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:test1/constants/transitions.dart';
-import 'package:test1/layout/car_layout.dart';
+
 import '../../constants/components.dart';
-import 'confirm_screen.dart';
 
 class ResultScreen extends StatelessWidget {
   final String role;
@@ -91,7 +89,7 @@ class ResultScreen extends StatelessWidget {
                       children: [
                         Text(
                           names[random.nextInt(names.length)],
-                          style: GoogleFonts.cairo(
+                          style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
@@ -99,8 +97,7 @@ class ResultScreen extends StatelessWidget {
                         SizedBox(height: size.height * .01),
                         Text(
                           '01112870010',
-                          style: GoogleFonts.cairo(
-                              fontSize: 20, color: Colors.blue),
+                          style: TextStyle(fontSize: 20, color: Colors.blue),
                         ),
                       ],
                     ),
@@ -108,7 +105,7 @@ class ResultScreen extends StatelessWidget {
                 ),
                 Text(
                   'المسافه المقدره بينكما',
-                  style: GoogleFonts.cairo(
+                  style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
@@ -117,141 +114,17 @@ class ResultScreen extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     text: kilo[random.nextInt(kilo.length)],
-                    style: GoogleFonts.cairo(
+                    style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue),
                     children: [
                       TextSpan(
                         text: 'كيلو متر',
-                        style: GoogleFonts.cairo(
-                            fontSize: 14, color: Colors.blueGrey),
+                        style: TextStyle(fontSize: 14, color: Colors.blueGrey),
                       ),
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'السعر : ',
-                      style: GoogleFonts.cairo(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    SizedBox(width: size.width * .01),
-                    RichText(
-                      text: TextSpan(
-                        text: '\$',
-                        style: GoogleFonts.cairo(
-                            fontSize: 17, color: Colors.green,fontWeight: FontWeight.bold),
-                        children: [
-                          TextSpan(
-                            text: price[random.nextInt(price.length)],
-                            style: GoogleFonts.cairo(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: size.height * .01),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(size.height * .02))),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              CustomPageRoute1(
-                                  child: ConfirmScreen(
-                                role: role,
-                              )));
-                        },
-                        child: shadeMask(
-                          'تأكيد الطلب',
-                          GoogleFonts.cairo(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: size.height * .2),
-                    const Spacer(),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(size.height * .02))),
-                      child: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (_) =>
-                                AlertDialog(
-                                  actions: [
-                                    Center(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment
-                                            .center,
-                                        mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .center,
-                                        children: [
-                                          TextButton(
-                                            onPressed:
-                                                () {
-                                              Navigator.pop(context);
-                                              Navigator.pop(context);
-                                            },
-                                            child:
-                                            shadeMask(
-                                              'اختيار عميل اخر',
-                                              GoogleFonts.cairo(
-                                                  fontSize:
-                                                  20),
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                              width:
-                                              120),
-                                          TextButton(
-                                            onPressed:
-                                                () {
-                                                  Navigator.pushReplacement(context, CustomPageRoute1(child: CarLayout()));
-                                            },
-                                            child:
-                                            shadeMask(
-                                              'الرجوع للصفحه الرئيسيه',
-                                              GoogleFonts.cairo(
-                                                  fontSize:
-                                                  20),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                          );
-                        },
-                        child: shadeMask(
-                          'إلغاء الطلب',
-                          GoogleFonts.cairo(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),

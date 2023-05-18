@@ -1,15 +1,13 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:test1/constants/transitions.dart';
 import 'package:test1/modules/location/result_screen.dart';
 
 import '../map_functions/is_permission_granted.dart';
 import '../map_functions/is_service_enabled.dart';
-import '../modules/location/get_lat_long_address.dart';
 
 class homeScreen extends StatefulWidget {
   static const String routeName = 'home-screen';
@@ -75,8 +73,8 @@ class _homeScreenState extends State<homeScreen> {
             onTap: (latLng) => updateUserMarker(latLng),
           ),
           Positioned(
-            height: MediaQuery.of(context).size.height*.2,
-            left: MediaQuery.of(context).size.width*.1,
+            height: MediaQuery.of(context).size.height * .2,
+            left: MediaQuery.of(context).size.width * .1,
             child: Container(
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,

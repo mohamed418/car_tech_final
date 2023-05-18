@@ -1,13 +1,13 @@
 import 'dart:io';
+
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:lottie/lottie.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../../../constants/components.dart';
 import '../../../../constants/transitions.dart';
@@ -119,8 +119,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                             image:
                                                                 DecorationImage(
                                                               fit: BoxFit.cover,
-                                                                  image: AssetImage('assets/images/person.png'),
-                                                                ),
+                                                              image: AssetImage(
+                                                                  'assets/images/person.png'),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -273,11 +274,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     children: [
                                       buildElevatedButton(
                                         context,
-                                        () => Navigator.push(context, CustomPageRoute1(child: const HelpScreen())),
+                                        () => Navigator.push(
+                                            context,
+                                            CustomPageRoute1(
+                                                child: const HelpScreen())),
                                         'الاقتراحات',
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.only(top: size.height*.01),
+                                        padding: EdgeInsets.only(
+                                            top: size.height * .01),
                                         child: buildElevatedButton(
                                           context,
                                           () {
@@ -310,16 +315,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             'سجل دخول الاول واستمتع بتجربه هي',
                             maxLines: 9,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.cairo(
-                                fontSize: 20, color: defaultColor),
+                            style: TextStyle(fontSize: 20, color: defaultColor),
                             textDirection: TextDirection.rtl,
                           ),
                           Text(
                             'الاولى من نوعها*_*',
                             maxLines: 9,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.cairo(
-                                fontSize: 20, color: defaultColor),
+                            style: TextStyle(fontSize: 20, color: defaultColor),
                             textDirection: TextDirection.rtl,
                           ),
                           const SizedBox(height: 50),
@@ -352,7 +355,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     vertical: 12, horizontal: 25),
                                 child: Text(
                                   'تسجيل دخول',
-                                  style: GoogleFonts.cairo(
+                                  style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 1),

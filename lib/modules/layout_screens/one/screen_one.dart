@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
-
-import '../../../constants/components.dart';
+import 'package:test1/map/home_screen.dart';
 import '../../../constants/transitions.dart';
-import '../../location/get_lat_long_address.dart';
-import 'fix_screen.dart';
-import 'other_screen.dart';
 
 class ScreenOne extends StatelessWidget {
   const ScreenOne({Key? key}) : super(key: key);
@@ -24,84 +18,53 @@ class ScreenOne extends StatelessWidget {
             children: [
               buildContainer(
                 size,
-                'a1',
-                'ونش',
+                // 'a1',
+                'سوبر ماركت',
                     () => Navigator.push(
                   context,
                   CustomPageRoute1(
-                    child: const GetLatLongScreen(role: 'wn4',),
+                    child: const homeScreen(
+                      role: 'wn4',
+                    ),
                   ),
                 ),
               ),
               buildContainer(
                 size,
-                'a2',
-                'تبديل كاوتش',
-                    () => showDialog(
-                  context: context,
-                  builder: (_) => AlertDialog(
-                    content: Lottie.asset('assets/lotties/a2.json'),
-                    actions: [
-                      Center(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  CustomPageRoute1(
-                                    child: const GetLatLongScreen(role: 'cawtch',),
-                                  ),
-                                );
-                              },
-                              child: shadeMask(
-                                'مش معايا',
-                                GoogleFonts.cairo(fontSize: 20),
-                              ),
-                            ),
-                            const Spacer(),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  CustomPageRoute1(
-                                    child: const GetLatLongScreen(role: 'cawtch',),
-                                  ),
-                                );
-                              },
-                              child: shadeMask(
-                                'معايا استبن',
-                                GoogleFonts.cairo(fontSize: 20),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                // 'a2',
+                'ملابس',
+                    () => Navigator.push(
+                  context,
+                  CustomPageRoute1(
+                    child: const homeScreen(
+                      role: 'cawtch',
+                    ),
                   ),
                 ),
               ),
               buildContainer(
                 size,
-                'a5',
-                'تصليح عطل',
+                // 'a5',
+                'كافيهات',
                     () => Navigator.push(
                   context,
                   CustomPageRoute1(
-                    child: const FixScreen(),
+                    child: const homeScreen(
+                      role: 'cawtch',
+                    ),
                   ),
                 ),
               ),
               buildContainer(
                 size,
-                'a4',
-                'أخرى',
+                // 'a4',
+                'مطاعم',
                     () => Navigator.push(
                   context,
                   CustomPageRoute1(
-                    child: const OtherScreen(),
+                    child: const homeScreen(
+                      role: 'cawtch',
+                    ),
                   ),
                 ),
               ),
@@ -112,7 +75,7 @@ class ScreenOne extends StatelessWidget {
     );
   }
 
-  Column buildContainer(Size size, lottie, text, function) {
+  Column buildContainer(Size size, text, function) {
     return Column(
       children: [
         GestureDetector(
@@ -120,26 +83,22 @@ class ScreenOne extends StatelessWidget {
             function();
           },
           child: Container(
-            height: size.height * .3,
-            width: size.width * .8,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.all(Radius.circular(size.width * .1)),
-            ),
-            child: Column(
-              children: [
-                Lottie.asset('assets/lotties/$lottie.json',
-                    height: size.height * .2),
-                Padding(
+              height: size.height * .3,
+              width: size.width * .8,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius:
+                BorderRadius.all(Radius.circular(size.width * .1)),
+              ),
+              child: Center(
+                child: Padding(
                   padding: const EdgeInsets.only(bottom: 30),
                   child: Text(
                     '$text',
-                    style: GoogleFonts.cairo(fontSize: 30),
+                    style: TextStyle(fontSize: 30),
                   ),
-                )
-              ],
-            ),
-          ),
+                ),
+              )),
         ),
         SizedBox(height: size.height * .02),
       ],

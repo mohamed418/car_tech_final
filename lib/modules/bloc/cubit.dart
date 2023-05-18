@@ -1,9 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:test1/modules/bloc/states.dart';
+
 import '../../constants/components.dart';
 import '../../models/current_user.dart';
 import '../../models/login_model.dart';
@@ -11,7 +10,6 @@ import '../../network/local/cache_helper.dart';
 import '../../network/remote/dio_helper.dart';
 import '../layout_screens/one/screen_one.dart';
 import '../layout_screens/two/profile/profile_screen.dart';
-
 
 class CarCubit extends Cubit<CarStates> {
   CarCubit() : super(TopShopInitialState());
@@ -28,12 +26,13 @@ class CarCubit extends Cubit<CarStates> {
     icon = isVisible ? Icons.visibility : Icons.visibility_off;
     emit(ChangeBottomNavState());
   }
+
   List<BottomNavyBarItem> tabs = [
     BottomNavyBarItem(
       icon: const Icon(Icons.car_rental_outlined),
       title: Text(
         "الخدمات",
-        style: GoogleFonts.cairo(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
@@ -45,7 +44,7 @@ class CarCubit extends Cubit<CarStates> {
       icon: const Icon(Icons.account_circle_outlined),
       title: Text(
         "الإعدادات",
-        style: GoogleFonts.cairo(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),

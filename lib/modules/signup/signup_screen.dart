@@ -3,7 +3,6 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:motion_toast/resources/arrays.dart';
@@ -15,7 +14,6 @@ import 'register_cubit/register_states.dart';
 
 // ignore: must_be_immutable
 class SignUpScreen extends StatefulWidget {
-
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -51,8 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     LoginScreen(),
                     context,
                   );
-                }
-                else {
+                } else {
                   print(state.loginModel.msg);
                   String? m = state.loginModel.msg;
                   MotionToast.error(
@@ -60,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       m!,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.cairo(fontSize: 15),
+                      style: TextStyle(fontSize: 15),
                     ),
                     animationType: AnimationType.fromLeft,
                     //layoutOrientation: ORIENTATION.rtl,
@@ -69,14 +66,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 100,
                   ).show(context);
                 }
-              }
-              else if (state is SignUpErrorState) {
+              } else if (state is SignUpErrorState) {
                 MotionToast.error(
                   description: Text(
                     'اتاكد من البيانات المدخله وحاول مره اخرى',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.cairo(fontSize: 15),
+                    style: TextStyle(fontSize: 15),
                   ),
                   animationType: AnimationType.fromLeft,
                   //layoutOrientation: ORIENTATION.rtl,
@@ -94,7 +90,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SafeArea(
                     child: Column(
                       children: [
-                        const SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Align(
@@ -103,7 +101,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               onPressed: () {
                                 navigateTo(LoginScreen(), context);
                               },
-                              icon: const Icon(Icons.arrow_back, size: 30,),
+                              icon: const Icon(
+                                Icons.arrow_back,
+                                size: 30,
+                              ),
                             ),
                           ),
                         ),
@@ -114,7 +115,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Form(
                           key: formSignUpKey,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
                             child: Container(
                               decoration: BoxDecoration(
                                   color: Colors.grey.withOpacity(.3),
@@ -122,8 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       topLeft: Radius.circular(50),
                                       bottomRight: Radius.circular(50),
                                       topRight: Radius.circular(15),
-                                      bottomLeft: Radius.circular(15))
-                              ),
+                                      bottomLeft: Radius.circular(15))),
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: Column(
@@ -143,7 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         //hintText: 'دخل بريدك الالكتروني',
                                         label: Text(
                                           'الايميل',
-                                        style: GoogleFonts.cairo(),
+                                          style: TextStyle(),
                                         ),
                                       ),
                                     ),
@@ -158,7 +159,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           return null;
                                         }
                                       },
-                                      keyboardType: TextInputType.visiblePassword,
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
                                       decoration: InputDecoration(
                                         suffixIcon: IconButton(
                                           onPressed: () {
@@ -168,8 +170,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
 
                                         //hintText: 'enter a valid password',
-                                        label: Text('كلمة المرور',
-                                          style: GoogleFonts.cairo(),
+                                        label: Text(
+                                          'كلمة المرور',
+                                          style: TextStyle(),
                                         ),
                                       ),
                                       obscureText: cubit.isVisible1,
@@ -190,7 +193,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         //hintText: 'enter your name',
                                         label: Text(
                                           'الاسم',
-                                        style: GoogleFonts.cairo(),
+                                          style: TextStyle(),
                                         ),
                                       ),
                                     ),
@@ -210,37 +213,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         //hintText: 'enter your mobile number',
                                         label: Text(
                                           'رقم التليفون',
-                                        style: GoogleFonts.cairo(),
+                                          style: TextStyle(),
                                         ),
                                       ),
                                     ),
                                     const SizedBox(height: 20),
                                     BuildCondition(
                                       condition: state is! SignUpLoadingState,
-                                      builder: (context) =>
-                                          ElevatedButton(
-                                            onPressed: () {
-                                                if (formSignUpKey.currentState!
-                                                    .validate()) {
-                                                  FocusScope.of(context).unfocus();
-                                                  SignUpCubit.get(context)
-                                                      .userSignUp(
-                                                    name: _nameController1.text,
-                                                    email: _emailController1.text,
-                                                    password: _passwordController1.text,
-                                                    mobile: _mobileController1.text,
-                                                  );
-                                                } else {
-                                                  FocusScope.of(context).unfocus();
-                                                }
-                                            },
-                                            child: Text('تسجيل'.toUpperCase(),
-                                                style: GoogleFonts.cairo(
-                                                    color: Colors.white,
-                                                    fontSize: 20)),
-                                          ),
-                                      fallback: (context) =>
-                                      const Center(
+                                      builder: (context) => ElevatedButton(
+                                        onPressed: () {
+                                          if (formSignUpKey.currentState!
+                                              .validate()) {
+                                            FocusScope.of(context).unfocus();
+                                            SignUpCubit.get(context).userSignUp(
+                                              name: _nameController1.text,
+                                              email: _emailController1.text,
+                                              password:
+                                                  _passwordController1.text,
+                                              mobile: _mobileController1.text,
+                                            );
+                                          } else {
+                                            FocusScope.of(context).unfocus();
+                                          }
+                                        },
+                                        child: Text('تسجيل'.toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20)),
+                                      ),
+                                      fallback: (context) => const Center(
                                           child: CircularProgressIndicator()),
                                     ),
                                     const SizedBox(height: 10),
@@ -248,14 +249,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       alignment: Alignment.bottomRight,
                                       child: TextButton(
                                           onPressed: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginScreen(),));
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen(),
+                                                ));
 
                                             // navigateAndFinish(
                                             //     LoginScreen(), context);
                                           },
                                           child: Text(
                                             'لديك حساب بالفعل؟',
-                                            style: GoogleFonts.cairo(
+                                            style: TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold),
                                           )),
@@ -278,5 +284,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
-
